@@ -44,7 +44,7 @@ void creer_chemin(Case** game_board) {
         nb_pas++;
     }
     
-    if (pos_x != fin_x || pos_y != fin_y) { // on "force" l'arrivée vers 'X'
+   */ if (pos_x != fin_x || pos_y != fin_y) { // on "force" l'arrivée vers 'X'
         while (pos_y > fin_y) {
             pos_y--;
             if (game_board[pos_y][pos_x].affichage == ' ') {
@@ -63,7 +63,7 @@ void creer_chemin(Case** game_board) {
                 game_board[pos_y][pos_x].affichage = '.';
             }
         }
-    }
+    } */
     
     game_board[HEIGHT - 2][WIDTH / 2].affichage = '#'; // Vérif qu'on ait bien le début à '#' et la fin à 'X' 
     game_board[fin_y][fin_x].affichage = 'X';
