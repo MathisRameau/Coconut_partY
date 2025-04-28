@@ -44,7 +44,7 @@ void creer_chemin(Case** game_board) {
         nb_pas++;
     }
     
-   */ if (pos_x != fin_x || pos_y != fin_y) { // on "force" l'arrivée vers 'X'
+   /* if (pos_x != fin_x || pos_y != fin_y) { // on "force" l'arrivée vers 'X'
         while (pos_y > fin_y) {
             pos_y--;
             if (game_board[pos_y][pos_x].affichage == ' ') {
