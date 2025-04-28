@@ -7,7 +7,7 @@ void creer_chemin(Case** game_board) {
     
    
     int fin_x = WIDTH / 2; 
-    int fin_y = 1; 
+    int fin_y = HEIGHT - 2; 
     
 
     game_board[pos_y][pos_x].affichage = '#';
