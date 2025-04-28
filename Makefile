@@ -1,6 +1,6 @@
 PROG = projet
 
-SRC = main.c chemin.c direction.c creation_singes_crabes.c 
+SRC = main.c chemin.c direction.c creation_singes_crabes.c deplacement_crab.c
 
 all: $(PROG)
    ./$ (PROG)
