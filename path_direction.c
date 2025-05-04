@@ -1,0 +1,39 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include "path_direction.h"
+
+int choix_direction(int derniere_direction, Case case_chemin, int zone_top, int zone_bottom, int zone_left, int zone_right) {
+      int direction;
+      int tries = 0;
+
+      do {
+            direction = (rand() % 3) + 1;
+            tries++;
+
+            int next_x = case_chemin.pos_x;
+            int next_y = case_chemin.pos_y;
+
+            if (direction == GAUCHE) next_y--;
+            else if (direction == DROITE) next_y++;
+            else if (direction == HAUT) next_x--;
+
+            if ((derniere_direction == DROITE && direction == GAUCHE) ||
+            (derniere_direction == GAUCHE && direction == DROITE)) continue;
+
+            if (next_x < zone_top || next_x > zone_bottom) continue;
+            if (next_y < zone_left || next_y > zone_right) continue;
+
+            break;
+
+      } while (tries < 20);
+
+      if (case_chemin.pos_x == zone_top) {
+            if (case_chemin.pos_y < WIDTH / 2) {
+                  direction = DROITE;
+            } else {
+                  direction = GAUCHE;
+            }
+      }
+
+      return direction;
+}
