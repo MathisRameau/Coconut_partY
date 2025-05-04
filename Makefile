@@ -1,6 +1,6 @@
 PROG = projet
 
-SRC = main.c chemin.c direction.c creation_singes_crabes.c deplacement_crab.c
+SRC = main.c gameBoard_display.c gameBoard_creation.c gameBoard_free.c gameBoard_smooth.c gameBoard_playArea.c gameBoard_dimension.c  path_direction.c path_creation.c monkeys_creation.c crabs_creation.c crabs_movement.c
 
 all: $(PROG)
    ./$ (PROG)
