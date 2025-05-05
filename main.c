@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <stdbool.h>
+#include <unistd.h>
 #include "gameBoard_dimension.h"
 #include "gameBoard_creation.h"
 #include "gameBoard_smooth.h"
@@ -29,7 +30,6 @@ int main() {
     Monkey monkey = create_monkey(game_board, height, width);
     Crab crab = create_crab(game_board, chemin, height, width, start_x, start_y);
     display_gameBoard(game_board, height, width);
-    free_gameBoard(game_board, height);
 
     while (running) {
         move_crab(&crab, game_board, chemin, chemin_length, &crab_index);
@@ -43,6 +43,8 @@ int main() {
         }
         sleep(1);
     }
+    
+    free_gameBoard(game_board, height);
 
     return 0;
 }
