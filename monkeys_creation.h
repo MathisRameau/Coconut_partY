@@ -3,6 +3,8 @@
 
 #include "gameBoard_creation.h"
 
+#define MONKEY_NONE -1
+
 typedef struct {
     int x;
     int y;
