@@ -23,9 +23,13 @@ Monkey create_monkey(Case** game_board, int height, int width) {
     }
 
     if (path_count == 0) {
-        printf("Aucune case PATH trouvée pour placer un singe.\n");
-        return;
-    }
+    printf("Aucune case PATH trouvée pour placer un singe.\n");
+    monkey.x = MONKEY_NONE;
+    monkey.y = MONKEY_NONE;
+    monkey.type = MONKEY_NONE;
+    return monkey;
+}
+
 
     int random_index = rand() % path_count;
     int i = path_positions[random_index][0];
