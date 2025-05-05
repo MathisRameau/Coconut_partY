@@ -38,7 +38,7 @@ Case* generate_path(Case** game_board, int* start_x, int* start_y, int* taille_c
 
         chemin[*taille_chemin - 1] = case_chemin;
 
-        direction = choix_direction(derniere_direction, case_chemin, zone_top, zone_bottom, zone_left, zone_right);
+        direction = choix_direction(derniere_direction, case_chemin, zone_top, zone_bottom, zone_left, zone_right, width);
         derniere_direction = direction;
 
         int next_x = case_chemin.pos_x;
