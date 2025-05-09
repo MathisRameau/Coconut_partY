@@ -32,7 +32,7 @@ void afficher_menu() {
     }
 
 int main() {
-    s	rand(time(NULL));
+    srand(time(NULL));
 
 	afficher_menu();
 
