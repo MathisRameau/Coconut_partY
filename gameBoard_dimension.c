@@ -5,7 +5,7 @@
 void game_board_dimension(int* height, int* width) {
 
       do {
-            printf("De quelle hauteur veux-tu que le plateau soit ? --> ");
+            printf("De quelle hauteur veux-tu que le plateau soit ? -->\n");
             if (scanf("%d", height) != 1 || *height <= 10) {
 
                   printf("Veuillez entrer un entier supérieur à 10 pour la hauteur.\n");
@@ -15,7 +15,7 @@ void game_board_dimension(int* height, int* width) {
       } while (*height <= 0);
 
       do {
-            printf("De quelle largeur veux-tu que le plateau soit ? --> ");
+            printf("De quelle largeur veux-tu que le plateau soit ? -->\n");
             if (scanf("%d", width) != 1 || *width <= 10) {
 
                   printf("Veuillez entrer un entier supérieur à 10 valide pour la largeur.\n");

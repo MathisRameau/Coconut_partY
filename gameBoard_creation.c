@@ -27,6 +27,10 @@ Case** gameBoard_creation(int height, int width) {
 
             if (i == 0 || i == height - 1 || j == 0 || j == width - 1) {
                 game_board[i][j].type = SEA;
+
+            }else if (i > height /3 && i < 2 * height/3 &&j > width/3 && j < 2* width/3) {
+                    game_board[i][j].type = LAND;
+
             } else {
                 int randVal = rand() % 100;
                 game_board[i][j].type = (randVal < PROB_LAND) ? LAND : SEA;

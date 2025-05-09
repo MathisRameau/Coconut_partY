@@ -3,9 +3,22 @@
 #include "gameBoard_playArea.h"
 #include "path_creation.h"
 
+
+void reset_board_paths(Case** game_board, int height, int width) {
+    for(int i = 0; i < height; i++) {
+        for (int j = 0; j < width; j++) {
+            if(game_board[i][j].type == PATH || game_board[i][j].type == START || game_board[i][j].type == CROWN) {
+                game_board[i][j].type == LAND;
+            }
+        }
+    }
+}
+
 void play_area(Case** game_board, Case** chemin, int* taille_chemin, int height, int width, int* start_x, int* start_y) {
 
-    int div = 3 * width / height + 1;
+    reset_board_paths(game_board, height, width);
+    
+    int div = 3 + width / height;
     int dx = width / div, dy = height / (0.6 * div);
 
     int zone_top = dy;
@@ -23,7 +36,7 @@ void play_area(Case** game_board, Case** chemin, int* taille_chemin, int height,
                 game_board[i][j].type = LAND;
             }
 
-            if (i == zone_top && j == width / 2) {
+            if (i == zone_top && j == *start_y) {
                 game_board[i][j].type = CROWN;
             }
 

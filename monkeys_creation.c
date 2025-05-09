@@ -1,64 +1,26 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include "monkeys_creation.h"
+#include "gameBoard_playArea.h" 
 
-Monkey create_monkey(Case** game_board, int height, int width) {
+#define MAX_ADJACENT_CASES 1000
 
-      Monkey monkey;
+typedef struct {
+    int x;
+    int y;
+} Position;
 
-    int path_positions[height * width][2];
-    int path_count = 0;
-
-    for (int i = 1; i < height - 1; i++) {
-
-        for (int j = 1; j < width - 1; j++) {
-
-            if (game_board[i][j].type == PATH) {
-
-                path_positions[path_count][0] = i;
-                path_positions[path_count][1] = j;
-                path_count++;
+int is_adjacent_to_path(Case** game_board, int x, int y, int height, int width) {
+    int dx[] = {-1, 1, 0, 0};
+    int dy[] = {0, 0, -1, 1};
+    for (int d = 0; d < 4; d++) {
+        int nx = x + dx[d];
+        int ny = y + dy[d];
+        if (nx >= 0 && ny >= 0 && nx < height && ny < width) {
+            if (game_board[nx][ny].type == PATH) {
+                return 1;
             }
         }
     }
-
-    if (path_count == 0) {
-    printf("Aucune case PATH trouvée pour placer un singe.\n");
-    monkey.x = MONKEY_NONE;
-    monkey.y = MONKEY_NONE;
-    monkey.type = MONKEY_NONE;
-    return monkey;
+    return 0;
 }
 
-
-    int random_index = rand() % path_count;
-    int i = path_positions[random_index][0];
-    int j = path_positions[random_index][1];
-
-    monkey.x = i;
-    monkey.y = j;
-    monkey.type = MONKEY;
-
-    if (game_board[i][j].type == PATH) {
-
-        if (game_board[i][j - 1].type == LAND) {
-            game_board[i][j - 1].type = MONKEY;
-            monkey.x = i;
-            monkey.y = j - 1;
-        }
-
-        else if (game_board[i][j + 1].type == LAND) {
-            game_board[i][j + 1].type = MONKEY;
-            monkey.x = i;
-            monkey.y = j + 1;
-        }
-
-        else if (game_board[i - 1][j].type == LAND) {
-            game_board[i - 1][j].type = MONKEY;
-            monkey.x = i - 1;
-            monkey.y = j;
-        }
-    }
-
-    return monkey;
-}

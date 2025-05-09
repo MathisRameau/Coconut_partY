@@ -3,14 +3,14 @@
 
 #include "gameBoard_creation.h"
 
-#define MONKEY_NONE -1
-
 typedef struct {
     int x;
     int y;
+    int temps_tir;
     Terrain type;
+
 } Monkey;
 
-Monkey create_monkey(Case** game_board, int height, int width);
+Monkey monkeys_creation(Case** game_board, int height, int width);
 
 #endif

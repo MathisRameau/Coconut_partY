@@ -7,8 +7,8 @@ typedef struct {
     int x;
     int y;
     int path_index;
-    Terrain type;
     int hp;
+    Terrain type;
 } Crab;
 
 Crab create_crab(Case** game_board, Case* chemin, int height, int width, int start_x, int start_y);
