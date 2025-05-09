@@ -3,6 +3,7 @@
 #include <time.h>
 #include <string.h>
 #include <stdbool.h>
+#include <windows.h>
 #include <unistd.h>
 #include "gameBoard_dimension.h"
 #include "gameBoard_creation.h"
@@ -16,6 +17,7 @@
 #include "clean_screen.h"
 #include "path_creation.h"
 #include "monkeys_creation.h"
+#include "monkey_attack.h"
 
 void afficher_menu() {
         printf("============================================================\n");
@@ -42,14 +44,14 @@ do {
     getchar(); // Consomme le \n restant
 
     if (choix == 2) {
-        printf("Au revoir !\n");
+        printf("A BIENTOT SUR COCOCOCONUTTTT ! \n");
         return 0;
     }
 
     if (choix == 3) {
         FILE *save = fopen("sauvegarde.txt", "r");
         if (save == NULL) {
-            printf("Aucune sauvegarde trouvee.\n");
+            printf("Aucune sauvegarde trouvee. On t'invite sur prochaine game !\n");
             return 0;
         } else {
             // Ajoute ici le code pour charger une partie si tu as la structure prévue
@@ -98,6 +100,8 @@ do {
 
     while (running) {
         move_crab(&crab, game_board, chemin, chemin_length, &crab_index);
+
+        monkeys_attack_crabs(monkeys, monkey_nombre, &crab, game_board); 
 
         //clear_screen();
 
