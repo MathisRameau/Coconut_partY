@@ -3,7 +3,6 @@
 #include <time.h>
 #include <string.h>
 #include <stdbool.h>
-
 #include <unistd.h>
 #include "gameBoard_dimension.h"
 #include "gameBoard_creation.h"
@@ -34,39 +33,33 @@ void afficher_menu() {
 int main() {
     srand(time(NULL));
 
-	afficher_menu();
+int choix = 0;
+afficher_menu();
 
-	int choix = 0;
-	char buffer[100];
+do {
+    printf("Entrez votre choix :\n");
+    scanf("%d", &choix);
+    getchar(); // Consomme le \n restant
 
-	do {
-    		printf("Entrez votre choix : ");
-    		if (fgets(buffer, sizeof(buffer), stdin) == NULL) {
-        		printf("Erreur de lecture.\n");
-        	continue;
-    		}
+    if (choix == 2) {
+        printf("Au revoir !\n");
+        return 0;
+    }
 
-    		if (sscanf(buffer, "%d", &choix) != 1 || choix < 1 || choix > 3) {
-        		printf("Choix invalide. Veuillez entrer 1, 2 ou 3.\n");
-        		choix = 0; // pour rester dans la boucle
-    		}
-	} while (choix < 1 || choix > 3);
+    if (choix == 3) {
+        FILE *save = fopen("sauvegarde.txt", "r");
+        if (save == NULL) {
+            printf("Aucune sauvegarde trouvee.\n");
+            return 0;
+        } else {
+            // Ajoute ici le code pour charger une partie si tu as la structure prévue
+            printf("Reprise de la partie en cours...\n");
+            fclose(save);
+            // Tu mettras ici ton propre code de chargement
+        }
+    }
 
-	if (choix == 2) {
-		printf("A bientot sur CoCoCoCoonut !\n");
-		return 0;
-	}
-	
-	if ( choix == 3) {
-		FILE* save = fopen("sauvegarde.txt", "r"); 
-		if ( save == NULL) {
-			printf("Aucune sauvegarde trouvee : commence une nouvelle game !\n");
-			return 0;
-		}
-		
-		fclose(save);
-		printf("Partie reprise (chargement...)\n");
-	}
+} while (choix != 1);
 
     bool running = true;
 
@@ -82,15 +75,15 @@ int main() {
     play_area(game_board, &chemin, &chemin_length, height, width, &start_x, &start_y);
 
     int monkey_nombre;
-    
+    char buffer[100];
     do {
-        printf("Combien de singes veux-tu placer ?\n");
+        printf("Combien de singes veux-tu placer ? (max 3 pour commencer).\n");
         fgets(buffer, sizeof(buffer), stdin);
-        if (sscanf(buffer, "%d", &monkey_nombre) != 1 || monkey_nombre <= 0) {
-            printf("Entree invalide : veuillez entrer un nombre entier strictement positif.\n");
+        if (sscanf(buffer, "%d", &monkey_nombre) != 1 || monkey_nombre <= 0 || monkey_nombre > 3) {
+            printf("Entree invalide : veuillez entrer un nombre entier entre 1 et 3.\n");
             monkey_nombre = 0;
         }
-    } while (monkey_nombre <= 0); 
+    } while (monkey_nombre == 0); 
 
     Monkey* monkeys = malloc(sizeof(Monkey)* monkey_nombre);
     
