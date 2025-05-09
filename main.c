@@ -3,7 +3,7 @@
 #include <time.h>
 #include <string.h>
 #include <stdbool.h>
-#include <windows.h>
+
 #include <unistd.h>
 #include "gameBoard_dimension.h"
 #include "gameBoard_creation.h"
@@ -32,35 +32,41 @@ void afficher_menu() {
     }
 
 int main() {
-    srand(time(NULL));
+    s	rand(time(NULL));
 
-int choix = 0;
-afficher_menu();
+	afficher_menu();
 
-do {
-    printf("\nEntrez votre choix : ");
-    scanf("%d", &choix);
-    getchar(); // Consomme le \n restant
+	int choix = 0;
+	char buffer[100];
 
-    if (choix == 2) {
-        printf("Au revoir !\n");
-        return 0;
-    }
+	do {
+    		printf("Entrez votre choix : ");
+    		if (fgets(buffer, sizeof(buffer), stdin) == NULL) {
+        		printf("Erreur de lecture.\n");
+        	continue;
+    		}
 
-    if (choix == 3) {
-        FILE *save = fopen("sauvegarde.txt", "r");
-        if (save == NULL) {
-            printf("Aucune sauvegarde trouvee.\n");
-            return 0;
-        } else {
-            // Ajoute ici le code pour charger une partie si tu as la structure prévue
-            printf("Reprise de la partie en cours...\n");
-            fclose(save);
-            // Tu mettras ici ton propre code de chargement
-        }
-    }
+    		if (sscanf(buffer, "%d", &choix) != 1 || choix < 1 || choix > 3) {
+        		printf("Choix invalide. Veuillez entrer 1, 2 ou 3.\n");
+        		choix = 0; // pour rester dans la boucle
+    		}
+	} while (choix < 1 || choix > 3);
 
-} while (choix != 1);
+	if (choix == 2) {
+		printf("A bientot sur CoCoCoCoonut !\n");
+		return 0;
+	}
+	
+	if ( choix == 3) {
+		FILE* save = fopen("sauvegarde.txt", "r"); 
+		if ( save == NULL) {
+			printf("Aucune sauvegarde trouvee : commence une nouvelle game !\n");
+			return 0;
+		}
+		
+		fclose(save);
+		printf("Partie reprise (chargement...)\n");
+	}
 
     bool running = true;
 
@@ -76,7 +82,7 @@ do {
     play_area(game_board, &chemin, &chemin_length, height, width, &start_x, &start_y);
 
     int monkey_nombre;
-    char buffer[100];
+    
     do {
         printf("Combien de singes veux-tu placer ?\n");
         fgets(buffer, sizeof(buffer), stdin);
