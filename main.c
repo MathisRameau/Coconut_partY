@@ -12,7 +12,6 @@
 #include "monkeys_creation.h"
 #include "crabs_creation.h"
 #include "crabs_movement.h"
-#include "generate_crab.h"
 #include "filter_active_crabs.h"
 
 int main(){
