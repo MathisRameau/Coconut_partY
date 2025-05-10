@@ -1,0 +1,52 @@
+Reste à faire :
+
+      - gérer les crabs morts (avec plus de hp) --> les effacer de l'affichage (Lahouari)
+
+      - demander au joueur son pseudo (Sara) --> OK
+
+      - implémenter une logique de monnaie (que l'on peut appeler noix de coco) (Sara)
+
+      - ajouter dans l'affichage un carré avec nombres de noix de coco en dessous du game_board (Mathis) --> OK
+
+      - vérifier tout les pointeurs en entrée de fonction (Mathis) --> OK
+
+      - faire un magasin de singe : (Mathis) --> OK
+
+            - demander à l'utilisateur s'il veut acheter / ameliorer un singe :
+
+                  - en créer un nouveau ou améliorer un déjà existant
+
+                  - demander si on veut faire pause
+
+      - enregistrer la partie dans le fichier (lahouari)
+
+      - faire différents niveaux de singes et de crabes : (Mathis) --> OK
+
+            On pourrait mettre "level" en paramètre de Crab et Monkey et qu'il y ait 3 niveaux :
+
+                  Crab:
+
+                        Niveau 1 : 1 pt de vie
+                        Niveau 2 : 2 pt de vie
+                        Niveau 3 : 3 pt de vie
+
+                  Singe :
+
+                        Niveau 1 : 1 attack, 1 portée
+                        Niveau 2 : 2 attack, 1 portée
+                        Niveau 3 : 2 attack, 2 portée
+
+
+      - construire une logique de tours : (Lahouari)
+
+      - faire un menu de fin de partie (game over) (Sara)
+
+Echeances:
+
+      - Jeu terminé 100% --> samedi 00h00
+      - Rapport --> samedi 00h00
+      - Read Me --> samedi 00h00
+      - Commantaires (Anglais) --> dimanche 16h00
+      - Traduction du code en anglais (quelques variables) --> dimanche 16h00
+      - Vidéo du programme --> dimanche 17h00
+      - Mise en ligne finale du code --> dimanche 17h00
