@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "monkeys_store.h"
+#include "load.h"
 
 void monkeys_store(Monkey* tab_monkey, int* nb_monkeys, int* nb_ndc){
 
