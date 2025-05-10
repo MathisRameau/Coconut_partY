@@ -18,7 +18,9 @@ SRC = \
       monkey_attack.c \
       menu_display.c \
       ask_monkey_position.c \
-      ask_players_name.c
+      ask_players_name.c \
+	save.c \
+	load.c
 
 all: $(PROG)
 	./$(PROG)
