@@ -25,7 +25,7 @@ void monkeys_store(Monkey* tab_monkey, int* nb_monkeys, int* nb_ndc){
       do{
             printf("Entrez votre choix --> ");
 
-            if(scanf("%d", &choix != 1 || choix < 1 || choix < 3){
+            if(scanf("%d", &choix) != 1 || choix < 1 || choix > 3){
 
                   printf("Veuillez entrer un entier correspondant à un des choix ci-dessus");
                   while (getchar() != '\n');
