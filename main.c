@@ -65,7 +65,7 @@ int main(){
 
             if(!tour_actuel.success){
 
-                  printf("bye bue");
+                  printf("bye bye");
 
                   running = false;
 
