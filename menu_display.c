@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "clean_screen.h"
 #include "menu_display.h"
+#include "load.h"
 
 void display_menu() {
 
@@ -30,19 +31,20 @@ void display_menu() {
             }
 
             if (choix == 3) {
-
+                  
+                  Crab crab;
+                  int monkey_count, nb_ndc;
+                  Monkey* monkeys = load_game(&crab, &monkey_count, &nb_ndc); 
                   FILE *save = fopen("sauvegarde.txt", "r");
 
-                  if (save == NULL) {
+                  if (monkeys == NULL) {
 
-                        printf("Aucune sauvegarde trouvee. On t'invite sur prochaine game !\n");
-                        exit(4);
+                        printf("Erreur lors du chargement.\n");
+                        exit(1);
 
-                  } else {
-
-                        printf("Reprise de la partie en cours...\n");
-                        fclose(save);
-                  }
+                    } 
+            
+                    printf("Reprise de la partie en cours...\n");
             }
 
       } while (choix != 1);
