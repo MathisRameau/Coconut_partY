@@ -1,0 +1,35 @@
+Comment se passe un tour? -->
+
+      - On augmente le nombre de noix de coco (égal à la somme des niveaux des crabes tués au tour précédent)
+
+      - On demande à l'utilisateur si il veut acheter ou améliorer un singe (s'il peut) :
+
+            - Si non, on continue
+            - Si oui, on place X singe(s) ou on améliore X singe(s) déjà présent(s)
+
+      - On subit une invasion de crabes
+
+
+Exemple des paramètres d'un tour :
+
+      Tour 1 (noix de coco : 0) :
+
+            - 1 singe (niveau 1) (singe gratuit)
+
+            - 2 crabes (niveau 1)
+
+      Tour 2 (noix de coco : 2) :
+
+            - 2 singes (niveau 1) (singe gratuit)
+
+            - 1 crabe (niveau 2), 3 crabes (niveau 1)
+
+      Tour 3 (noix de coco : 6) :
+
+            - 2 singes (niveau 1)
+
+            - 2 crabes (niveau 2), 5 crabes (niveau 1)
+
+      Tour 4 (noix de coco : 12) :
+
+            -...
