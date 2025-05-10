@@ -6,7 +6,7 @@ void monkeys_store(Monkey* tab_monkey, int* nb_monkeys, int* nb_ndc){
 
       if(!tab_monkey || !nb_monkeys || !nb_ndc ) return;
       if (*nb_ndc <= 0) {
-            printf("Vous n'avez pas assez de noix de coco pour entrer dans le magasin de singe\n");
+            printf("Vous n'avez pas assez de noix de coco pour entrer dans le magasin de singe.\n");
             return;
       }
 
@@ -32,7 +32,7 @@ void monkeys_store(Monkey* tab_monkey, int* nb_monkeys, int* nb_ndc){
 
             }
 
-      }while(scanf("%d", &choix != 1 || choix < 1 || choix < 3);
+      }while(scanf("%d", &choix) != 1 || choix < 1 || choix < 3);
 
       if(choix == ACHETER || choix == AMELIORER){
 
@@ -57,19 +57,19 @@ void monkeys_store(Monkey* tab_monkey, int* nb_monkeys, int* nb_ndc){
             do{
                   printf("Entrez votre choix --> ");
 
-                  if(scanf("%d", &achat != 1 || achat < 1 || achat < 3){
+                  if(scanf("%d", &achat) != 1 || achat < 1 || achat < 3){
 
                         printf("Veuillez entrer un entier correspondant à un des choix ci-dessus");
                         while (getchar() != '\n');
 
                   }
 
-            }while(scanf("%d", &achat != 1 || achat < 1 || achat < 3);
+            }while(scanf("%d", &achat) != 1 || achat < 1 || achat < 3);
 
             if(*nb_ndc < prix_achat[achat]){
 
-                  printf("On ne berne pas un singe! Vous n'avez pas assez de noix de coco!\n");
-                  printf("Pour la peine, le magasin de singe se ferme!\n");
+                  printf("On ne berne pas un singe ! Vous n'avez pas assez de noix de coco !\n");
+                  printf("Pour la peine, le magasin de singe se ferme !\n");
 
             }else{
 
@@ -77,8 +77,8 @@ void monkeys_store(Monkey* tab_monkey, int* nb_monkeys, int* nb_ndc){
 
                   *nb_ndc -= prix_achat[achat];
 
-                  printf("Félicitations! Vous avez acheté un singe de niveau %d!\n", achat);
-                  printf("Vous avez maintenant %d noix de coco!\n", *nb_ndc);
+                  printf("Félicitations! Vous avez acheté un singe de niveau %d !\n", achat);
+                  printf("Vous avez maintenant %d noix de coco !\n", *nb_ndc);
 
                   Monkey* temp = realloc(tab_monkey, *nb_monkeys * sizeof(Monkey));
 
@@ -106,7 +106,7 @@ void monkeys_store(Monkey* tab_monkey, int* nb_monkeys, int* nb_ndc){
             printf("|  Niveau 3 : %d noix de coco                           |\n", prix_amelioration[3]);
             printf("============================================================\n\n");
 
-            printf("Parmi vos singes ci-dessous, lequel voulez-vous améliorer? :\n\n");
+            printf("Parmi vos singes ci-dessous, lequel voulez-vous améliorer ? :\n\n");
 
             for(int i = 0; i < *nb_monkeys; i++){
 
@@ -122,14 +122,14 @@ void monkeys_store(Monkey* tab_monkey, int* nb_monkeys, int* nb_ndc){
             do{
                   printf("Entrez le numéro du singe --> ");
 
-                  if(scanf("%d", &amelioration != 1 || amelioration < 1 || amelioration < *nb_monkeys){
+                  if(scanf("%d"), &amelioration != 1 || amelioration < 1 || amelioration < *nb_monkeys){
 
                         printf("Veuillez entrer un entier correspondant à un des singes ci-dessus");
                         while (getchar() != '\n');
 
                   }
 
-            }while(scanf("%d", &amelioration != 1 || amelioration < 1 || amelioration < *nb_monkeys);
+            }while(scanf("%d"), &amelioration != 1 || amelioration < 1 || amelioration < *nb_monkeys);
 
             if(tab_monkey[amelioration].level == 3){
 
@@ -156,10 +156,8 @@ void monkeys_store(Monkey* tab_monkey, int* nb_monkeys, int* nb_ndc){
 
       }else if(choix == PAUSE){
 
-            printf("Pas de soucis, nous enregistrons la partie!\n");
-            // A faire
-            display_menu();
-
+            printf("Pas de soucis, nous enregistrons la partie !\n");
+            save_game(crab, tab_monkey, *nb_monkeys, *nb_ndc);
       }
 
       printf("Merci d'être passé par le magasin de singe! Nous esperons vous revoir bientôt!\n")
